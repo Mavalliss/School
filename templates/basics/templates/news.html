@@ -1,0 +1,43 @@
+{% extends 'basics/templates/base-pages.html' %}
+{% load static %}
+{% block content %}
+    {% if last_article %}
+        <div class="container">
+            <section>
+                <div class="intro">
+                    <div class="last">
+                        <div class="last-viewed">
+                            <span class="last-new">NEW</span>
+                            <img src="{% static 'basics/img/eye.svg' %}" alt="no image">
+                            <span class="intro-new__block-num">25</span>
+                        </div>
+                        <span class="last__title d-block">{{ last_article.title }}</span>
+                        <span class="last__text d-block">{{ last_article.text }}</span>
+                        <a href="{% url 'article' last_article.id %}">
+                            <button class="last__button">Читать</button>
+                        </a>
+                    </div>
+                </div>
+            </section>
+        </div>
+    {% endif %}
+    {% if all_articles %}
+        <section class="news">
+            <div class="container">
+                {% for article in all_articles %}
+                    <div class="item">
+                        <div class="item__count">
+                            <span>{{ forloop.counter }}</span>
+                        </div>
+                        <div class="item__title col-md-12">
+                            <span>{{ article.title }}</span>
+                        </div>
+                        <a href="{% url 'article' article.id %}">
+                            <button class="item__button col-md-10">Читать</button>
+                        </a>
+                    </div>
+                {% endfor %}
+            </div>
+        </section>
+    {% endif %}
+{% endblock %}
