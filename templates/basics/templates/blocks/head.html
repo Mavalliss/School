@@ -1,8 +1,13 @@
 {% load static %}
+{% load announcement %}
 <div class="head">
     <div class="navbar">
         <div class="logo">
             <a href="{% url 'index' %}"><img src="{% static 'basics/img/ico.png' %}" alt=""></a>
+            {% get_announcement as announce %}
+            <div class="urgent">
+                <li class="nav-item"><a class="nav-link" style="color:red;" href="{% if announce != None %}article_{{ announce.link }}{% endif %}">{% if announce != None %}{{ announce }}{% endif %}</a></li>
+            </div>
         </div>
         <div class="nav">
             <li class="nav-item"><a class="nav-link" href="{% url 'news' %}">Новости</a></li>

@@ -1,1 +1,14 @@
-{{ pk }}
+{% extends 'basics/templates/base-pages.html' %}
+{% block content %}
+    <div class="container">
+        <div class="heading">
+            <span>{{ article.heading }}</span>
+        </div>
+        <div class="title">
+            <span>{{ article.title }}</span>
+        </div>
+        <div class="text">
+            <span>{{ article.text }}</span>
+        </div>
+    </div>
+{% endblock %}

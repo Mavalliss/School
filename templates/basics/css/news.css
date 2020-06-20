@@ -111,6 +111,15 @@ a:hover {
     max-width: 85%;
 }
 
+.item__date {
+    margin-right: -70px;
+    margin-left: 83px;
+    font-weight: 300;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+}
+
 .item__button {
     background: #315AF2;
     border-radius: 3px;

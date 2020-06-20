@@ -19,3 +19,11 @@ class News(models.Model):
     class Meta:
         verbose_name = 'Статья'
         verbose_name_plural = 'Статьи'
+
+
+class Urgent(models.Model):
+    text = models.CharField('Срочно', max_length=50)
+    link = models.CharField('Ссылка', max_length=20, default=None)
+
+    def __str__(self):
+        return self.text

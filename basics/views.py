@@ -15,7 +15,7 @@ def about(request):
 
 def news(request):
     try:
-        all_articles = News.objects.all()[1:]  # Все кроме 1
+        all_articles = News.objects.all().order_by('-pub_date')[1:]  # Все кроме 1
         last_article = News.objects.all().order_by('-pub_date')[0]  # Самый первый элемент по Дате публикации!!
     except:
         return render(request, 'basics/templates/news.html')
@@ -24,4 +24,4 @@ def news(request):
 
 
 def article(request, pk):
-    return render(request, 'basics/templates/blocks/article.html', {'pk': pk})
+    return render(request, 'basics/templates/blocks/article.html', {'article': News.objects.get(pk=pk)})
