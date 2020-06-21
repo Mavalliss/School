@@ -1,15 +1,19 @@
 {% load static %}
+{% load announcement %}
 <div class="head">
-    <div class="container">
-        <div class="navbar">
-            <div class="logo">
-                <a href="{% url 'index' %}"><img src="{% static 'basics/img/ico.png' %}" alt=""></a>
+    <div class="navbar">
+        <div class="logo">
+            <a href="{% url 'index' %}"><img src="{% static 'basics/img/ico.png' %}" alt=""></a>
+            {% get_announcement as announce %}
+            <div class="urgent">
+                <li class="nav-item"><a class="nav-link" style="color:red;" href="{% if announce != None %}article_{{ announce.link }}{% endif %}">{% if announce != None %}{{ announce }}{% endif %}</a></li>
             </div>
-            <div class="nav">
-                <li class="nav-item"><a class="nav-link" href="">Новости</a></li>
-                <li class="nav-item"><a class="nav-link" href="">Блог</a></li>
-                <li class="nav-item"><a class="nav-link" href="{% url 'about' %}">О нас</a></li>
-            </div>
+        </div>
+        <div class="nav">
+            <li class="nav-item"><a class="nav-link" href="{% url 'news' %}">Новости</a></li>
+            <li class="nav-item"><a class="nav-link" href="{% url 'about' %}">О школе</a></li>
+            <li class="nav-item"><a class="nav-link" href="">О городе</a></li>
+            <li class="nav-item"><a class="nav-link" href="" style="color:#0bc90b;">Наша новая школа</a></li>
         </div>
     </div>
 </div>

@@ -5,4 +5,7 @@
         height: 91vh;
         background-size: 100% 100%;
     }
+    .article-wrapper.active .item {
+        background-color: {% if article.heading == 'Внимание' %}#fdff61{% else %}#315AF2{% endif %}; {# Пока не работает. #}
+    }
 </style>
