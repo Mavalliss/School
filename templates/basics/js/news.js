@@ -4,4 +4,5 @@ $('.article-wrapper').click(function (object) {
     $(this).toggleClass("active");
     $('.detail').not(a).slideUp();
     $(this).find('.detail').slideToggle();
+//    переписать! чтобы при нажатии на detail ничего не сворачивалось!
 });

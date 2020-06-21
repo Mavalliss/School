@@ -15,4 +15,5 @@
     display: none;
     position: relative; /* position & overflow чтобы не дёргались toggle slide*/
     overflow: hidden;
+    font-family: 'Balsamiq Sans', serif;
 }

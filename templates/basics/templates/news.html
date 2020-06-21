@@ -14,9 +14,11 @@
                     <span class="last__title d-block"
                           style="{% if last_article.heading == 'Внимание' %}color:red;font-weight:500;{% endif %}">{{ last_article.title }}</span>
                     <span class="last__text d-block">{{ last_article.text }}</span>
-                    <a href="{% url 'article' last_article.id %}">
-                        <button class="last__button">Читать</button>
-                    </a>
+                    {% if last_article.sep_page %}
+                        <a href="{% url 'article' last_article.id %}">
+                            <button class="last__button">Читать</button>
+                        </a>
+                    {% endif %}
                 </div>
             </div>
         </div>
@@ -30,7 +32,7 @@
                             <div class="item__count">
                                 <span>{{ forloop.counter }}</span>
                             </div>
-                            <div class="item__title col-md-8">
+                            <div class="item__title col-md-{% if article.sep_page %}8{% else %}9{% endif %}">
                                 {# Сделать, что если нет отдельной страницы, то кнопка читать display:none и this поменять на col-md-9 #}
                                 {% if article.heading == 'Внимание' %}
                                     <div class="item__title-important">
@@ -44,9 +46,11 @@
                             <div class="item__date col-md-2">
                                 <span>{{ article.pub_date }}</span>
                             </div>
-                            <a href="{% url 'article' article.id %}">
-                                <button class="item__button col-md-10">Читать</button>
-                            </a>
+                            {% if article.sep_page %}
+                                <a href="{% url 'article' article.id %}">
+                                    <button class="item__button col-md-10">Читать</button>
+                                </a>
+                            {% endif %}
                         </div>
                         {#                    {% if article.sep_page %}#}
                         {% include 'basics/templates/blocks/article_preview.html' %}
