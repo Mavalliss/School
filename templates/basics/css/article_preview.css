@@ -1,0 +1,18 @@
+.jumbotron {
+    padding: 2rem 1rem;
+}
+
+.title {
+    border-bottom: 1px solid gray;
+    font-weight: 500;
+}
+
+.text {
+    padding-top: 4px;
+}
+
+.detail {
+    display: none;
+    position: relative; /* position & overflow чтобы не дёргались toggle slide*/
+    overflow: hidden;
+}

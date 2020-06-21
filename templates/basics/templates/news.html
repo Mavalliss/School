@@ -1,42 +1,57 @@
 {% extends 'basics/templates/base-pages.html' %}
 {% load static %}
 {% block content %}
+    {% include 'basics/css/css.html' %}
     {% if last_article %}
         <div class="container">
-                <div class="intro">
-                    <div class="last">
-                        <div class="last-viewed">
-                            <span class="last-new">NEW</span>
-                            <img src="{% static 'basics/img/eye.svg' %}" alt="no image">
-                            <span class="intro-new__block-num">25</span>
-                        </div>
-                        <span class="last__title d-block" style="{% if last_article.heading == 'Внимание' %}color:red;font-weight:500;{% endif %}">{{ last_article.title }}</span>
-                        <span class="last__text d-block">{{ last_article.text }}</span>
-                        <a href="{% url 'article' last_article.id %}">
-                            <button class="last__button">Читать</button>
-                        </a>
+            <div class="intro">
+                <div class="last">
+                    <div class="last-viewed">
+                        <span class="last-new">NEW</span>
+                        <img src="{% static 'basics/img/eye.svg' %}" alt="no image">
+                        <span class="intro-new__block-num">25</span>
                     </div>
+                    <span class="last__title d-block"
+                          style="{% if last_article.heading == 'Внимание' %}color:red;font-weight:500;{% endif %}">{{ last_article.title }}</span>
+                    <span class="last__text d-block">{{ last_article.text }}</span>
+                    <a href="{% url 'article' last_article.id %}">
+                        <button class="last__button">Читать</button>
+                    </a>
                 </div>
+            </div>
         </div>
     {% endif %}
     {% if all_articles %}
         <section class="news">
             <div class="container">
                 {% for article in all_articles %}
-                    <div class="item">
-                        <div class="item__count">
-                            <span>{{ forloop.counter }}</span>
+                    <li class="article-wrapper">
+                        <div class="item">
+                            <div class="item__count">
+                                <span>{{ forloop.counter }}</span>
+                            </div>
+                            <div class="item__title col-md-8">
+                                {# Сделать, что если нет отдельной страницы, то кнопка читать display:none и this поменять на col-md-9 #}
+                                {% if article.heading == 'Внимание' %}
+                                    <div class="item__title-important">
+                                        <span>{{ article.title }}</span>
+                                        {# Сделать если важно - звёздочку или типо того #}
+                                    </div>
+                                {% else %}
+                                    <span>{{ article.title }}</span>
+                                {% endif %}
+                            </div>
+                            <div class="item__date col-md-2">
+                                <span>{{ article.pub_date }}</span>
+                            </div>
+                            <a href="{% url 'article' article.id %}">
+                                <button class="item__button col-md-10">Читать</button>
+                            </a>
                         </div>
-                        <div class="item__title col-md-8">
-                            <span style="{% if article.heading == 'Внимание' %}color:red;{% endif %}">{{ article.title }}</span>
-                        </div>
-                        <div class="item__date col-md-2">
-                            <span>{{ article.pub_date }}</span>
-                        </div>
-                        <a href="{% url 'article' article.id %}">
-                            <button class="item__button col-md-10">Читать</button>
-                        </a>
-                    </div>
+                        {#                    {% if article.sep_page %}#}
+                        {% include 'basics/templates/blocks/article_preview.html' %}
+                        {#                    {% endif %}#}
+                    </li>
                 {% endfor %}
             </div>
         </section>

@@ -2,13 +2,13 @@
 {% block content %}
     <div class="container">
         <div class="heading">
-            <span>{{ article.heading }}</span>
+            <span>{{ article.heading|safe }}</span>
         </div>
         <div class="title">
-            <span>{{ article.title }}</span>
+            <span>{{ article.title|safe }}</span>
         </div>
         <div class="text">
-            <span>{{ article.text }}</span>
+            <span>{{ article.text|safe }}</span>
         </div>
     </div>
 {% endblock %}

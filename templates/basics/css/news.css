@@ -86,6 +86,14 @@ a:hover {
     margin-bottom: 80px;
 }
 
+.article-wrapper {
+    list-style: none;
+}
+
+/*.article-wrapper.active .detail { возможно пригодиться при переделывании анимации без js и toggle slide */
+/*    display: block;*/
+/*}*/
+
 .item {
     display: flex;
     border: 1px solid #CDCDCD;
@@ -94,11 +102,26 @@ a:hover {
     color: #000000;
     padding: 18px;
     margin-top: 10px;
+    cursor: pointer;
+}
+
+.item__title-important {
+    color: red;
 }
 
 .item__count {
     font-size: 22px;
     line-height: 30px;
+}
+
+.article-wrapper.active .item,
+.article-wrapper.active .item__title-important {
+    color: white !important;
+}
+
+.article-wrapper.active .item__button {
+    background: white;
+    color: #315AF2;
 }
 
 .item__title {

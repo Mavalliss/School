@@ -7,8 +7,9 @@ class News(models.Model):
     heading = models.CharField('Заголовок', max_length=100, blank=True)
     title = models.CharField('Название статьи', max_length=200)
     text = models.TextField('Текст')
-    # photo = models.ImageField('Картинка')
+    # photo = models.ImageField('Картинка')  # Пока не мигровали
     pub_date = models.DateField('Дата публикации')
+    # sep_page = models.BooleanField('Нужна ли отдельная ссылка')  # Откывать ли на отдельной странице
 
     def __str__(self):
         return self.title
